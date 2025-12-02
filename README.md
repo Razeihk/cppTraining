@@ -1,0 +1,2 @@
+# cppTraining
+Niquez votre IA
