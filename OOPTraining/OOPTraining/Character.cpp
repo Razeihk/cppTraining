@@ -35,14 +35,14 @@ void Character::receiveDamage(int damage)
 
 void Character::attack(Character &target)
 {
-
+	target.receiveDamage(m_weapon.getDamage());
 }
 
 void Character::drinkHealthPotion(int quantity)
 {
 	m_health += quantity;
 
-	if (m_health < 100)
+	if (m_health > 100)
 	{
 		m_health = 100;
 	}
@@ -50,7 +50,7 @@ void Character::drinkHealthPotion(int quantity)
 
 void Character::changeWeapon(string newWeaponName, int newWeaponDamage)
 {
-
+	m_weapon.changeWeapon(newWeaponName, newWeaponDamage);
 }
 
 bool Character::isAlive() const

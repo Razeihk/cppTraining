@@ -1,7 +1,32 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{183B9EEA-4925-424D-8D81-5D0C5480FFB0}|OOPTraining\\OOPTraining.vcxproj|C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\oopTraining.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{183B9EEA-4925-424D-8D81-5D0C5480FFB0}|OOPTraining\\OOPTraining.vcxproj|solutionrelative:OOPTraining\\oopTraining.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{183B9EEA-4925-424D-8D81-5D0C5480FFB0}|OOPTraining\\OOPTraining.vcxproj|C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{183B9EEA-4925-424D-8D81-5D0C5480FFB0}|OOPTraining\\OOPTraining.vcxproj|solutionrelative:OOPTraining\\Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{183B9EEA-4925-424D-8D81-5D0C5480FFB0}|OOPTraining\\OOPTraining.vcxproj|C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{183B9EEA-4925-424D-8D81-5D0C5480FFB0}|OOPTraining\\OOPTraining.vcxproj|solutionrelative:OOPTraining\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{183B9EEA-4925-424D-8D81-5D0C5480FFB0}|OOPTraining\\OOPTraining.vcxproj|C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\Weapon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{183B9EEA-4925-424D-8D81-5D0C5480FFB0}|OOPTraining\\OOPTraining.vcxproj|solutionrelative:OOPTraining\\Weapon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{183B9EEA-4925-424D-8D81-5D0C5480FFB0}|OOPTraining\\OOPTraining.vcxproj|C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\Weapon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{183B9EEA-4925-424D-8D81-5D0C5480FFB0}|OOPTraining\\OOPTraining.vcxproj|solutionrelative:OOPTraining\\Weapon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{183B9EEA-4925-424D-8D81-5D0C5480FFB0}|OOPTraining\\OOPTraining.vcxproj|C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\oopTraining.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{183B9EEA-4925-424D-8D81-5D0C5480FFB0}|OOPTraining\\OOPTraining.vcxproj|solutionrelative:OOPTraining\\oopTraining.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +34,89 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Weapon.h",
+              "DocumentMoniker": "C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\Weapon.h",
+              "RelativeDocumentMoniker": "OOPTraining\\Weapon.h",
+              "ToolTip": "C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\Weapon.h",
+              "RelativeToolTip": "OOPTraining\\Weapon.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-04T11:48:53.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Weapon.cpp",
+              "DocumentMoniker": "C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\Weapon.cpp",
+              "RelativeDocumentMoniker": "OOPTraining\\Weapon.cpp",
+              "ToolTip": "C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\Weapon.cpp",
+              "RelativeToolTip": "OOPTraining\\Weapon.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-04T11:53:55.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Character.h",
+              "DocumentMoniker": "C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\Character.h",
+              "RelativeDocumentMoniker": "OOPTraining\\Character.h",
+              "ToolTip": "C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\Character.h",
+              "RelativeToolTip": "OOPTraining\\Character.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-04T11:13:50.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Character.cpp",
+              "DocumentMoniker": "C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\Character.cpp",
+              "RelativeDocumentMoniker": "OOPTraining\\Character.cpp",
+              "ToolTip": "C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\Character.cpp",
+              "RelativeToolTip": "OOPTraining\\Character.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-04T11:01:00.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "oopTraining.h",
+              "DocumentMoniker": "C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\oopTraining.h",
+              "RelativeDocumentMoniker": "OOPTraining\\oopTraining.h",
+              "ToolTip": "C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\oopTraining.h",
+              "RelativeToolTip": "OOPTraining\\oopTraining.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-03T10:48:44.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "oopTraining.cpp",
+              "DocumentMoniker": "C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\oopTraining.cpp",
+              "RelativeDocumentMoniker": "OOPTraining\\oopTraining.cpp",
+              "ToolTip": "C:\\Users\\cesar\\OneDrive\\Documents\\Repositories\\CppTraining\\OOPTraining\\OOPTraining\\oopTraining.cpp",
+              "RelativeToolTip": "OOPTraining\\oopTraining.cpp",
+              "ViewState": "AgIAABoAAAAAAAAAAAAYwDgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-03T10:40:28.265Z",
+              "EditorCaption": ""
             }
           ]
         }

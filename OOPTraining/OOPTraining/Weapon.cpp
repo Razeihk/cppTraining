@@ -19,6 +19,11 @@ void Weapon::changeWeapon(std::string name, int damage)
 	m_damage = damage;
 }
 
+int Weapon::getDamage() const
+{
+	return m_damage;
+}
+
 void Weapon::display() const
 {
 	cout << "Weapon: " << m_name << " (Damage: " << m_damage << ")" << endl;

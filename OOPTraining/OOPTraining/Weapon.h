@@ -10,7 +10,7 @@ public:
 	Weapon(std::string name, int damage);
 	void changeWeapon(std::string name, int damage);
 	void display() const;
-
+	int getDamage()const;
 
 private:
 
@@ -18,4 +18,3 @@ private:
 	int m_damage;
 
 };
-
