@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 int main()
 {
 	rpgFight();
@@ -16,49 +15,46 @@ int main()
 
 void rpgFight()
 {
-	Character hero;
-	Character enemy;
-	Character characterCopy(enemy); // Creates another character, a copy of enemy, with its attributes
+	Weapon greatSword("Great sword", 20);
+	Weapon spear("Spear", 10);
+	Weapon doubleAxe("Double Axe", 30);
+
+	Spell fireball("Fireball", 20, 40);
+	Spell acidball("Acidball", 40, 50);
+
+	Character hero("Hero", greatSword, fireball);
+	Character enemy("Enemy", spear);
+	Character enemy2(enemy);
+
+	hero.displayState();
+	enemy.displayState();
+	enemy2.displayState();
+
+
+	// FIGHT
+
+	hero.attack(enemy);
+	enemy.attack(hero);
+	hero.throwSpell(enemy2);
+	enemy2.drinkHealthPotion(10);
 	
-
-	hero.attack(enemy);
-	cout << "Hero attacked enemy" << endl << endl;
-	cout << "Hero" << endl;
-	hero.displayState();
-	cout << "Enemy" << endl;
-	enemy.displayState();
-
 	cout << endl;
-	enemy.drinkHealthPotion(100);
-	cout << "Enemy drinks health potion" << endl;
+	hero.displayState();
+	enemy.displayState();
+	enemy2.displayState();
 
+	hero.changeWeapon(doubleAxe);
 	enemy.attack(hero);
-	cout << "Enemy attacked hero" << endl;
-	hero.attack(enemy);
-	cout << "Hero attacked enemy" << endl << endl;
-	cout << "Hero" << endl;
-	hero.displayState();
-	cout << "Enemy" << endl;
-	enemy.displayState();
+	hero.attack(enemy2);
+	enemy2.attack(hero);
 
 	cout << endl;
-	enemy.changeWeapon("Double axe", 30);
-	cout << "Enemy has changed weapon" << endl << endl;
-	cout << "Enemy" << endl;
-	enemy.displayState();
-
-	cout << endl;
-	enemy.attack(hero);
-	cout << "Enemy attacked hero" << endl << endl;
-	cout << "Hero" << endl;
 	hero.displayState();
-	cout << "Enemy" << endl;
 	enemy.displayState();
-
+	enemy2.displayState();
 }
 
-void createAndDisplay()
+void createAndDisplay(Character character)
 {
-	Character hero;
-	hero.displayState();
+	character.displayState();
 }
