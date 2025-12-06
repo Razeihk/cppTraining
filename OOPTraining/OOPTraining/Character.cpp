@@ -64,10 +64,10 @@ void Character::throwSpell(Character& target)
 	}
 }
 
-void Character::drinkHealthPotion(int quantity)
+void Character::drinkHealthPotion(HealthPotion healthPotion)
 {
-	cout << m_name << " drinks a health potion and restores " << quantity << " health points!" << endl;
-	m_health += quantity;
+	cout << m_name << " drinks a " << healthPotion.getPotionType() << " Health Potion and restores " << healthPotion.getPotionHealth() << " health points!" << endl;
+	m_health += healthPotion.getPotionHealth();
 
 	if (m_health > CharacterConsts::c_MaxHealth)
 	{

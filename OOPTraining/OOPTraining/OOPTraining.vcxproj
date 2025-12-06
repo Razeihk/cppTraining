@@ -20,12 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="HealthPotion.cpp" />
     <ClCompile Include="oopTraining.cpp" />
     <ClCompile Include="Spell.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
+    <ClInclude Include="HealthPotion.h" />
     <ClInclude Include="oopTraining.h" />
     <ClInclude Include="Spell.h" />
     <ClInclude Include="Weapon.h" />

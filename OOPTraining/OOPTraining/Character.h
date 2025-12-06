@@ -3,6 +3,7 @@
 #include <string>
 #include "Weapon.h"
 #include "Spell.h"
+#include "HealthPotion.h"
 
 class Character
 {
@@ -17,7 +18,7 @@ public:
 	void receiveDamage(int damage);
 	void attack(Character& target);
 	void throwSpell(Character& target);
-	void drinkHealthPotion(int quantity);
+	void drinkHealthPotion(HealthPotion healthPotion);
 	void changeWeapon(Weapon newWeapon);
 	bool isAlive() const; // Doesn't change the object, so is declared as const
 

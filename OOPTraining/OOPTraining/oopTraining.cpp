@@ -15,6 +15,7 @@ int main()
 
 void rpgFight()
 {
+#pragma region objects
 	Weapon greatSword("Great sword", 20);
 	Weapon spear("Spear", 10);
 	Weapon doubleAxe("Double Axe", 30);
@@ -22,9 +23,17 @@ void rpgFight()
 	Spell fireball("Fireball", 20, 40);
 	Spell acidball("Acidball", 40, 50);
 
+	HealthPotion lowHealthPotion("Small");
+	HealthPotion mediumHealthPotion("Medium");
+	HealthPotion bigHealthPotion("Big");
+
+
 	Character hero("Hero", greatSword, fireball);
 	Character enemy("Enemy", spear);
 	Character enemy2(enemy);
+#pragma endregion
+
+	
 
 	hero.displayState();
 	enemy.displayState();
@@ -36,7 +45,7 @@ void rpgFight()
 	hero.attack(enemy);
 	enemy.attack(hero);
 	hero.throwSpell(enemy2);
-	enemy2.drinkHealthPotion(10);
+	enemy2.drinkHealthPotion(lowHealthPotion);
 	
 	cout << endl;
 	hero.displayState();
