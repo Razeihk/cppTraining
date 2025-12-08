@@ -3,7 +3,8 @@
 
 using namespace std;
 
-Spell::Spell(string name, int manaCost, int damage) : m_name(name), m_manaCost(manaCost), m_damage(damage)
+Spell::Spell(string name, int manaCost, int damage) 
+	: m_name(name), m_manaCost(manaCost), m_damage(damage)
 {
 
 }

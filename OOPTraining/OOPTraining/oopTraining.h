@@ -2,3 +2,4 @@
 
 void rpgFight();
 void createAndDisplay();
+void durationExercise();
