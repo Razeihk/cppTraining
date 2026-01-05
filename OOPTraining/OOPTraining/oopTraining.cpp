@@ -7,11 +7,13 @@
 #include "Character.h"
 #include "Duration.h"
 
+#include <vector>
+
 using namespace std;
 
 int main()
 {
-	rpgFight();
+	
 }
 
 void rpgFight()
