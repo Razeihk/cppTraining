@@ -7,8 +7,9 @@ namespace CharacterConsts
 	constexpr int c_MaxHealth = 100;
 }
 
-Character::Character(string name, int range, Weapon weapon, WeaponRanged weaponRanged)
-	: m_health(100), m_mana(100), m_Range(range), m_speed (10), m_weapon(weapon), m_name(name), m_weaponRanged(weaponRanged), m_spell("None", 0, 0)
+Character::Character(string name, int range, Weapon weapon, WeaponRanged weaponRanged, Armour armour)
+	: m_health(100), m_mana(100), m_Range(range), m_speed (10), 
+	m_Armour(armour), m_weapon(weapon), m_name(name), m_weaponRanged(weaponRanged), m_spell("None", 0, 0)
 {
 	// Creates a new Character
 	// Defines its weapon and weaponDamage when creating a new one
@@ -20,8 +21,9 @@ Character::Character(string name, int range, Weapon weapon, WeaponRanged weaponR
 //
 //}
 
-Character::Character(string name, int range, Weapon weapon, Spell spell)
-	: m_name(name), m_health(100), m_mana(100), m_speed(10), m_Range(range),m_weapon(weapon), m_weaponRanged("None", 0, 0), m_spell(spell)
+Character::Character(string name, int range, Weapon weapon, Spell spell, Armour armour)
+	: m_name(name), m_health(100), m_mana(100), m_speed(10), m_Range(range),
+	m_Armour(armour), m_weapon(weapon), m_weaponRanged("None", 0, 0), m_spell(spell)
 {
 
 }
@@ -36,13 +38,15 @@ Character::Character(Character const& other) : m_name(other.m_name), m_health(ot
 
 void Character::receiveDamage(int damage)
 {
-	cout << m_name << " is taking " << damage << " damage!" << endl;
-	m_health -= damage;
+	int actualDamge = damage - m_Armour.getDamageReduction();
+	m_health -= actualDamge;
 
 	if (m_health < 0)
 	{
 		m_health = 0;
 	}
+
+	cout << m_name << " is taking " << actualDamge << " damage!" << endl;
 }
 
 void Character::attack(Character &target)
@@ -96,6 +100,13 @@ void Character::changeWeapon(Weapon newWeapon)
 	m_weapon.changeWeapon(newWeapon.getName(), newWeapon.getDamage());
 }
 
+void Character::changeArmour(Armour newArmour)
+{
+	m_Armour.changeArmour(newArmour);
+	cout << m_name << " changed their amour for a " << newArmour.getName() << endl;
+}
+
+
 void Character::changeWeaponRanged(WeaponRanged newWeapon)
 {
 	cout << m_name << " swaps their range weapon for " << newWeapon.getName() << endl;
@@ -117,7 +128,7 @@ bool Character::isAlive() const
 	return m_health > 0;
 }
 
-// Getters
+// GETTERS
 
 string Character::getName() const
 {
@@ -153,6 +164,7 @@ void Character::displayState() const
 		cout << "Health: " << m_health << endl;
 		cout << "Mana: " << m_mana << endl;
 		cout << "Distance from Hero: " << m_Range << endl;
+		m_Armour.display();
 		m_weapon.display();
 		m_weaponRanged.display();
 		m_spell.display();
@@ -160,7 +172,7 @@ void Character::displayState() const
 	}
 	else
 	{
-		cout << m_name << " is dead!" << endl;
+		cout << m_name << " is dead!" << endl << endl;
 	}
 }
 

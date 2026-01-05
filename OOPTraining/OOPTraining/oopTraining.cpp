@@ -20,9 +20,14 @@ void rpgFight()
 	Weapon greatSword("Great sword", 20);
 	Weapon spear("Spear", 10);
 	Weapon doubleAxe("Double Axe", 30);
+
 	WeaponRanged simpleBow("Simple Bow", 5, 5);
 	WeaponRanged longbow("Longbow", 10, 15);
 	WeaponRanged crossbow("Crossbow", 20, 30);
+
+	Armour lightArmour("Light Armour", 1);
+	Armour mediumArmour("Medium Armour", 3);
+	Armour heavyArmour("Heavy Armour", 5);
 
 	Spell fireball("Fireball", 20, 40);
 	Spell acidball("Acidball", 40, 50);
@@ -31,13 +36,11 @@ void rpgFight()
 	HealthPotion mediumHealthPotion("Medium");
 	HealthPotion bigHealthPotion("Big");
 
-
-	Character hero("Hero", 0, greatSword, fireball);
+	Character hero("Hero", 0, greatSword, fireball, mediumArmour);
 	Character enemy("Enemy", 0, spear, simpleBow);
 	Character enemy2("Enemy2", 15, spear, simpleBow);
 #pragma endregion
 
-	
 
 	hero.displayState();
 	enemy.displayState();
