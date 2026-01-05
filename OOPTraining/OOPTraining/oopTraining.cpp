@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-	durationExercise();
+	rpgFight();
 }
 
 void rpgFight()
@@ -20,6 +20,9 @@ void rpgFight()
 	Weapon greatSword("Great sword", 20);
 	Weapon spear("Spear", 10);
 	Weapon doubleAxe("Double Axe", 30);
+	WeaponRanged simpleBow("Simple Bow", 5, 5);
+	WeaponRanged longbow("Longbow", 10, 15);
+	WeaponRanged crossbow("Crossbow", 20, 30);
 
 	Spell fireball("Fireball", 20, 40);
 	Spell acidball("Acidball", 40, 50);
@@ -29,9 +32,9 @@ void rpgFight()
 	HealthPotion bigHealthPotion("Big");
 
 
-	Character hero("Hero", greatSword, fireball);
-	Character enemy("Enemy", spear);
-	Character enemy2(enemy);
+	Character hero("Hero", 0, greatSword, fireball);
+	Character enemy("Enemy", 0, spear, simpleBow);
+	Character enemy2("Enemy2", 15, spear, simpleBow);
 #pragma endregion
 
 	
@@ -55,8 +58,36 @@ void rpgFight()
 
 	hero.changeWeapon(doubleAxe);
 	enemy.attack(hero);
+	hero.attack(enemy);
+	enemy2.attackRanged(hero);
+
+	cout << endl;
+	hero.displayState();
+	enemy.displayState();
+	enemy2.displayState();
+
+	hero.attack(enemy);
+	enemy.drinkHealthPotion(lowHealthPotion);
+	hero.attack(enemy);
+	enemy2.changeWeaponRanged(crossbow);
+
+	cout << endl;
+	hero.displayState();
+	enemy.displayState();
+	enemy2.displayState();
+
+	hero.attack(enemy);
+	enemy2.attackRanged(hero);
+	hero.move(hero.getSpeed(), enemy2);
+
+	cout << endl;
+	hero.displayState();
+	enemy.displayState();
+	enemy2.displayState();
+
 	hero.attack(enemy2);
 	enemy2.attack(hero);
+	hero.attack(enemy2);
 
 	cout << endl;
 	hero.displayState();

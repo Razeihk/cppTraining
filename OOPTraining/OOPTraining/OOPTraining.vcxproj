@@ -25,6 +25,7 @@
     <ClCompile Include="oopTraining.cpp" />
     <ClCompile Include="Spell.cpp" />
     <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="WeaponRanged.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
@@ -33,6 +34,7 @@
     <ClInclude Include="oopTraining.h" />
     <ClInclude Include="Spell.h" />
     <ClInclude Include="Weapon.h" />
+    <ClInclude Include="WeaponRanged.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

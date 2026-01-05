@@ -7,7 +7,8 @@ namespace CharacterConsts
 	constexpr int c_MaxHealth = 100;
 }
 
-Character::Character(string name, Weapon weapon) : m_health(100), m_mana(100), m_weapon(weapon), m_name(name), m_spell("None", 0, 0)
+Character::Character(string name, int range, Weapon weapon, WeaponRanged weaponRanged)
+	: m_health(100), m_mana(100), m_Range(range), m_speed (10), m_weapon(weapon), m_name(name), m_weaponRanged(weaponRanged), m_spell("None", 0, 0)
 {
 	// Creates a new Character
 	// Defines its weapon and weaponDamage when creating a new one
@@ -19,12 +20,13 @@ Character::Character(string name, Weapon weapon) : m_health(100), m_mana(100), m
 //
 //}
 
-Character::Character(string name, Weapon weapon, Spell spell) : m_name(name), m_health(100), m_mana(100), m_weapon(weapon), m_spell(spell)
+Character::Character(string name, int range, Weapon weapon, Spell spell)
+	: m_name(name), m_health(100), m_mana(100), m_speed(10), m_Range(range),m_weapon(weapon), m_weaponRanged("None", 0, 0), m_spell(spell)
 {
 
 }
 
-Character::Character(Character const& other) : m_name(other.m_name), m_health(other.m_health), m_mana(other.m_mana), m_weapon(other.m_weapon), m_spell(other.m_spell)
+Character::Character(Character const& other) : m_name(other.m_name), m_health(other.m_health), m_mana(other.m_mana), m_weapon(other.m_weapon), m_weaponRanged(other.m_weaponRanged), m_spell(other.m_spell)
 {
 	// Creates a new Character
 	// Takes a reference to an already existing Character to create an exact copy of it
@@ -47,6 +49,19 @@ void Character::attack(Character &target)
 {
 	cout << m_name << " is attacking " << target.getName() << " with " << m_weapon.getName() << endl;
 	target.receiveDamage(m_weapon.getDamage());
+}
+
+void Character::attackRanged(Character& target)
+{
+	cout << m_name << " is shooting at " << target.getName() << " with " << m_weaponRanged.getName() << endl;
+	if (abs(m_Range - target.m_Range) < m_weaponRanged.getRange())
+	{
+		target.receiveDamage(m_weaponRanged.getDamage());
+	}
+	else
+	{
+		cout << m_name << " misses, the target is too far" << endl;
+	}
 }
 
 void Character::throwSpell(Character& target)
@@ -81,6 +96,22 @@ void Character::changeWeapon(Weapon newWeapon)
 	m_weapon.changeWeapon(newWeapon.getName(), newWeapon.getDamage());
 }
 
+void Character::changeWeaponRanged(WeaponRanged newWeapon)
+{
+	cout << m_name << " swaps their range weapon for " << newWeapon.getName() << endl;
+	m_weaponRanged.changeWeapon(newWeapon);
+}
+
+void Character::move(int speed, Character& target)
+{
+	target.m_Range -= m_speed;
+	if (target.m_Range < 0)
+	{
+		target.m_Range = 0;
+	}
+	cout << m_name << " moves toward " << target.getName() << " and is now at " << target.m_Range << " metres" << endl;
+}
+
 bool Character::isAlive() const
 {
 	return m_health > 0;
@@ -103,14 +134,34 @@ int Character::getMana() const
 	return m_mana;
 }
 
+int Character::getRange() const
+{
+	return m_Range;
+}
+
+int Character::getSpeed() const
+{
+	return m_speed;
+
+}
+
 void Character::displayState() const
 {
-	cout << m_name << endl;
-	cout << "Health: " << m_health << endl;
-	cout << "Mana: " << m_mana << endl;
-	m_weapon.display();
-	m_spell.display();
-	cout << endl;
+	if (m_health > 0)
+	{
+		cout << m_name << endl;
+		cout << "Health: " << m_health << endl;
+		cout << "Mana: " << m_mana << endl;
+		cout << "Distance from Hero: " << m_Range << endl;
+		m_weapon.display();
+		m_weaponRanged.display();
+		m_spell.display();
+		cout << endl;
+	}
+	else
+	{
+		cout << m_name << " is dead!" << endl;
+	}
 }
 
 Character::~Character()
