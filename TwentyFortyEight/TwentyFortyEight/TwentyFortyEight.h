@@ -13,8 +13,14 @@ namespace TFEConst
 void InitialiseGrid();
 void DisplayGrid();
 void GenerateNewNumbers();
+void PlayerMove();
+void MoveRight();
+void MoveLeft();
+void MoveUp();
+void MoveDown();
 void UpdateEmptySlots();
 int RandomInt(int Min, int Max);
+bool CheckAvailableMove();
 
 
 // VARIABLES
@@ -22,3 +28,10 @@ int RandomInt(int Min, int Max);
 int Grid[TFEConst::c_NumberOfColumns][TFEConst::c_NumberOfRows];
 int RandomSeed = 0;
 std::vector<std::pair<int, int>> EmptySlots; // std::pair contains 2 objects tbd (first and second)
+
+bool bMoveRightPossible;
+bool bMoveLeftPossible;
+bool bMoveUpPossible;
+bool bMoveDownPossible;
+
+bool isRunning = true;
