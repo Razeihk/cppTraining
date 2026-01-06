@@ -42,3 +42,6 @@
 *.vsidx
 *.vsidx
 *.opendb
+
+.vs/
+x64/
