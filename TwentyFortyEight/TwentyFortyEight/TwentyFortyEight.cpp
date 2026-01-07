@@ -22,28 +22,28 @@ void InitialiseGrid()
 	//RandomSeed = (int)time(0);	// (int) asks to cast the variable as an int before returning it
 									// This initialises the randomSeed with a different number each time the app starts
 
-	// DEBUG TO WIN
-	/*for (int i = 0; i < TFEConst::c_NumberOfRows; i++)
-	{
-		for (int u = 0; u < TFEConst::c_NumberOfColumns; u++)
-		{
-			if (i == 0)
-			{
-				Grid[i][u] = 0;
-			}
-			else
-			{
-				Grid[i][u] = 1024;
-			}
-			
-		}
-	}*/
-
 	for (int i = 0; i < TFEConst::c_NumberOfRows; i++)
 	{
 		for (int u = 0; u < TFEConst::c_NumberOfColumns; u++)
 		{
 			Grid[i][u] = 0;
+		}
+	}
+
+	// DEBUG TO WIN
+	for (int i = 0; i < TFEConst::c_NumberOfRows; i++)
+	{
+		for (int u = 0; u < TFEConst::c_NumberOfColumns; u++)
+		{
+			if ((i == 1 && u == 1) || (i == 1 && u == 2) || (i == 2 && u == 1))
+			{
+				Grid[i][u] = 1024;
+			}
+			else
+			{
+				Grid[i][u] = 0;
+			}
+			
 		}
 	}
 
@@ -120,21 +120,23 @@ void PlayerMove()
 
 	cin >> Direction;
 
+	int MergedNumber = 0;
+
 	if (Direction == 'd' && bMoveRightPossible)
 	{
-		MoveRight();
+		MergedNumber = MoveRight();
 	}
 	else if (Direction == 'a' && bMoveLeftPossible)
 	{
-		MoveLeft();
+		MergedNumber = MoveLeft();
 	}
 	else if (Direction == 'w' && bMoveUpPossible)
 	{
-		MoveUp();
+		MergedNumber = MoveUp();
 	}
 	else if (Direction == 's' && bMoveDownPossible)
 	{
-		MoveDown();
+		MergedNumber = MoveDown();
 	}
 	else
 	{
@@ -144,6 +146,8 @@ void PlayerMove()
 	
 	GenerateNewNumbers();
 
+	CheckVictory(MergedNumber);
+
 	if (bIsRunning) // Makes sure the grid isn't displayed twice when losing or winning
 	{
 		DisplayGrid();
@@ -151,8 +155,10 @@ void PlayerMove()
 	
 }
 
-void MoveRight()
+int MoveRight()
 {
+	int MergedNumber = 0;
+
 	for (int i = 0; i < TFEConst::c_NumberOfRows; i++)
 	{
 		for (int u = TFEConst::c_NumberOfColumns - 2; u >= 0; u--)
@@ -165,17 +171,20 @@ void MoveRight()
 			}
 			else if (Grid[i][u] != 0 && Grid[i][u + 1] == Grid[i][u])
 			{
-				Grid[i][u + 1] *= 2;
+				MergedNumber = Grid[i][u + 1] * 2;
+				Grid[i][u + 1] = MergedNumber;
 				Grid[i][u] = 0;
-				if (CheckVictory(Grid[i][u + 1]))
-					return;
 			}
 		}
 	}
+
+	return MergedNumber;
 }
 
-void MoveLeft()
+int MoveLeft()
 {
+	int MergedNumber = 0;
+
 	for (int i = 0; i < TFEConst::c_NumberOfRows; i++)
 	{
 		for (int u = 1; u < TFEConst::c_NumberOfColumns; u++)
@@ -188,17 +197,20 @@ void MoveLeft()
 			}
 			else if (Grid[i][u] != 0 && Grid[i][u - 1] == Grid[i][u])
 			{
-				Grid[i][u - 1] *= 2;
+				MergedNumber = Grid[i][u - 1] * 2;
+				Grid[i][u - 1] = MergedNumber;
 				Grid[i][u] = 0;
-				if (CheckVictory(Grid[i][u - 1]))
-					return;
 			}
 		}
 	}
+	
+	return MergedNumber;
 }
 
-void MoveDown()
+int MoveDown()
 {
+	int MergedNumber = 0;
+
 	for (int u = 0; u < TFEConst::c_NumberOfColumns; u++)
 	{
 		for (int i = TFEConst::c_NumberOfRows - 2; i >= 0; i--)
@@ -211,17 +223,20 @@ void MoveDown()
 			}
 			else if (Grid[i][u] != 0 && Grid[i + 1][u] == Grid[i][u])
 			{
-				Grid[i + 1][u] *= 2;
+				MergedNumber = Grid[i][u + 1] * 2;
+				Grid[i + 1][u] = MergedNumber;
 				Grid[i][u] = 0;
-				if (CheckVictory(Grid[i + 1][u]))
-					return;
 			}
 		}
 	}
+
+	return MergedNumber;
 }
 
-void MoveUp()
+int MoveUp()
 {
+	int MergedNumber = 0;
+
 	for (int u = 0; u < TFEConst::c_NumberOfColumns; u++)
 	{
 		for (int i = 1; i < TFEConst::c_NumberOfRows; i++)
@@ -234,13 +249,14 @@ void MoveUp()
 			}
 			else if (Grid[i][u] != 0 && Grid[i - 1][u] == Grid[i][u])
 			{
-				Grid[i - 1][u] *= 2;
+				MergedNumber = Grid[i - 1][u] * 2;
+				Grid[i - 1][u] = MergedNumber;
 				Grid[i][u] = 0;
-				if (CheckVictory(Grid[i - 1][u]))
-					return;
 			}
 		}
 	}
+
+	return MergedNumber;
 }
 
 int RandomInt(int Min, int Max)
@@ -325,9 +341,9 @@ bool CheckAvailableMove()
 	return (bMoveRightPossible || bMoveLeftPossible || bMoveUpPossible || bMoveDownPossible);
 }
 
-bool CheckVictory(int& newScore)
+bool CheckVictory(int& MergedNumber)
 {
-	if (newScore == 2048)
+	if (MergedNumber == 2048)
 	{
 		DisplayGrid();
 		cout << "You reached 2048, congrats!" << endl;
