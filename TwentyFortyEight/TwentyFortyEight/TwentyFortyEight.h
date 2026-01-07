@@ -26,7 +26,6 @@ bool CheckAvailableMove();
 // VARIABLES
 
 int Grid[TFEConst::c_NumberOfColumns][TFEConst::c_NumberOfRows];
-int RandomSeed = 0;
 std::vector<std::pair<int, int>> EmptySlots; // std::pair contains 2 objects tbd (first and second)
 
 bool bMoveRightPossible;

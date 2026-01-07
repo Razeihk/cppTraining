@@ -7,10 +7,6 @@
 using namespace std;
 
 
-// TO DO
-// CHANGER MES MOVE CHECKS
-// RETRAVAILLER AFFICHAGE DE LA GRILLE (4 CHARACTERS DE LONG)
-
 int main()
 {
 	InitialiseGrid();
@@ -23,7 +19,7 @@ int main()
 
 void InitialiseGrid()
 {
-	RandomSeed = (int)time(0);	// (int) asks to cast the variable as an int before returning it
+	//RandomSeed = (int)time(0);	// (int) asks to cast the variable as an int before returning it
 								// This initialises the randomSeed with a different number each time the app starts
 
 	for (int i = 0; i < TFEConst::c_NumberOfRows; i++)
@@ -50,14 +46,31 @@ void DisplayGrid()
 	{
 		for (int u = 0; u < TFEConst::c_NumberOfColumns; u++)
 		{
-
-			if (u < TFEConst::c_NumberOfColumns - 1)
+			if (u == 0)
 			{
-				cout << Grid[i][u] << " | ";
+				cout << "|";
+			}
+
+			if (Grid[i][u] > 999) // If more than 3 characters
+			{
+				cout << Grid[i][u] << "|";
+			}
+			else if (Grid[i][u] > 99) // If more than 2 characters
+			{
+				cout << Grid[i][u] << " |";
+			}
+			else if (Grid[i][u] > 9) // If more than 1 character
+			{
+				cout << Grid[i][u] << "  |";
 			}
 			else
 			{
-				cout << Grid[i][u] << endl;
+				cout << Grid[i][u] << "   |"; // If only one character
+			}
+
+			if (u == TFEConst::c_NumberOfColumns - 1) // Go to next line if reached the end of the grid
+			{
+				cout << endl;
 			}
 		}
 	}
@@ -67,24 +80,14 @@ void DisplayGrid()
 
 void GenerateNewNumbers()
 {
-	UpdateEmptySlots();
+	UpdateEmptySlots(); // Get a list of all the empty slots
 
-	//if (EmptySlots.empty()) // Check if there's a slot available
-	//{
-	//	cout << "You lost you loser" << endl; // Call losing function instead
-	//	return;
-	//}
-
-	int SelectedSlot = RandomInt(0, (int)EmptySlots.size() - 1);
+	int SelectedSlot = RandomInt(0, (int)EmptySlots.size() - 1); // Pick a random index in the list of empty slots
 	
-	int tempRow = EmptySlots[SelectedSlot].first;
-	int tempColumn = EmptySlots[SelectedSlot].second;
-
-	//cout << tempRow << " and " << tempColumn << endl;
+	int tempRow = EmptySlots[SelectedSlot].first; // Get the first number at the index of the list of empty slots
+	int tempColumn = EmptySlots[SelectedSlot].second; // Get the second number at the index of the list of empty slots
 
 	Grid[tempRow][tempColumn] = 2;
-
-	RandomSeed++;
 }
 
 void PlayerMove()
@@ -92,6 +95,7 @@ void PlayerMove()
 	if (!CheckAvailableMove())
 	{
 		cout << "You lost, you loser!" << endl;
+		isRunning = false;
 		return;
 	}
 
@@ -244,66 +248,50 @@ bool CheckAvailableMove()
 	bMoveUpPossible = false;
 	bMoveDownPossible = false;
 
-	// RIGHT
+
 	for (int i = 0; i < TFEConst::c_NumberOfRows; i++)
 	{
-		if (bMoveRightPossible)
+		for (int j = 0; j < TFEConst::c_NumberOfColumns; j++)
 		{
-			break;
-		}
+			if (bMoveRightPossible && bMoveLeftPossible && bMoveUpPossible && bMoveDownPossible)
+				return true;
 
-		for (int u = TFEConst::c_NumberOfColumns - 1; u > 0; u--)
-		{
-			if (Grid[i][u] == 0 || Grid[i][u - 1] == Grid[i][u])
+			if (Grid[i][j] != 0)
 			{
-				bMoveRightPossible = true;
-				break;
+				// RIGHT
+				if (j != TFEConst::c_NumberOfColumns - 1 && (Grid[i][j + 1] == 0 || Grid[i][j + 1] == Grid[i][j]))
+				{
+					bMoveRightPossible = true;
+				}
+
+				// LEFT
+				if (j != 0 && (Grid[i][j - 1] == 0 || Grid[i][j - 1] == Grid[i][j]))
+				{
+					bMoveLeftPossible = true;
+				}
+
+				//UP
+				if (i != 0 && (Grid[i - 1][j] == 0 || Grid[i - 1][j] == Grid[i][j]))
+				{
+					bMoveUpPossible = true;
+				}
+
+				//DOWN
+				if (i != TFEConst::c_NumberOfRows - 1 && (Grid[i + 1][j] == 0 || Grid[i + 1][j] == Grid[i][j]))
+				{
+					bMoveDownPossible = true;
+				}
 			}
+			
 		}
 	}
 
-	// LEFT
-	for (int i = 0; i < TFEConst::c_NumberOfRows; i++)
-	{
-		for (int u = 0; u < TFEConst::c_NumberOfColumns - 2; u++)
-		{
-			if (Grid[i][u] == 0 || Grid[i][u + 1] == Grid[i][u])
-			{
-				bMoveLeftPossible = true;
-			}
-		}
-	}
-
-	// DOWN
-	for (int u = 0; u < TFEConst::c_NumberOfColumns; u++)
-	{
-		for (int i = TFEConst::c_NumberOfRows - 1; i > 0; i--)
-		{
-			if (Grid[i][u] == 0 || Grid[i - 1][u] == Grid[i][u])
-			{
-				bMoveDownPossible = true;
-			}
-		}
-	}
-
-	// UP
-	for (int u = 0; u < TFEConst::c_NumberOfColumns; u++)
-	{
-		for (int i = 0; i < TFEConst::c_NumberOfRows - 2; i++)
-		{
-			if (Grid[i][u] == 0 || Grid[i + 1][u] == Grid[i][u])
-			{
-				bMoveUpPossible = true;
-			}
-		}
-	}
-
-	cout << "Right Move: " << bMoveRightPossible << endl;
+	/*cout << "Right Move: " << bMoveRightPossible << endl;
 	cout << "Left Move: " << bMoveLeftPossible << endl;
 	cout << "Up Move: " << bMoveUpPossible << endl;
 	cout << "Down Move: " << bMoveDownPossible << endl;
 
-	cout << endl;
+	cout << endl;*/
 
 	return (bMoveRightPossible || bMoveLeftPossible || bMoveUpPossible || bMoveDownPossible);
 }
