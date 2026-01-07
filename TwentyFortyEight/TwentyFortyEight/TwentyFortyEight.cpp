@@ -11,7 +11,7 @@ int main()
 {
 	InitialiseGrid();
 
-	while (isRunning)
+	while (bIsRunning)
 	{
 		PlayerMove();
 	}
@@ -20,7 +20,24 @@ int main()
 void InitialiseGrid()
 {
 	//RandomSeed = (int)time(0);	// (int) asks to cast the variable as an int before returning it
-								// This initialises the randomSeed with a different number each time the app starts
+									// This initialises the randomSeed with a different number each time the app starts
+
+	// DEBUG TO WIN
+	/*for (int i = 0; i < TFEConst::c_NumberOfRows; i++)
+	{
+		for (int u = 0; u < TFEConst::c_NumberOfColumns; u++)
+		{
+			if (i == 0)
+			{
+				Grid[i][u] = 0;
+			}
+			else
+			{
+				Grid[i][u] = 1024;
+			}
+			
+		}
+	}*/
 
 	for (int i = 0; i < TFEConst::c_NumberOfRows; i++)
 	{
@@ -29,7 +46,7 @@ void InitialiseGrid()
 			Grid[i][u] = 0;
 		}
 	}
-	
+
 	for (int i = 0; i < 2; i++)
 	{
 		GenerateNewNumbers();
@@ -95,7 +112,7 @@ void PlayerMove()
 	if (!CheckAvailableMove())
 	{
 		cout << "You lost, you loser!" << endl;
-		isRunning = false;
+		bIsRunning = false;
 		return;
 	}
 
@@ -127,7 +144,11 @@ void PlayerMove()
 	
 	GenerateNewNumbers();
 
-	DisplayGrid();
+	if (bIsRunning) // Makes sure the grid isn't displayed twice when losing or winning
+	{
+		DisplayGrid();
+	}
+	
 }
 
 void MoveRight()
@@ -146,6 +167,8 @@ void MoveRight()
 			{
 				Grid[i][u + 1] *= 2;
 				Grid[i][u] = 0;
+				if (CheckVictory(Grid[i][u + 1]))
+					return;
 			}
 		}
 	}
@@ -167,6 +190,8 @@ void MoveLeft()
 			{
 				Grid[i][u - 1] *= 2;
 				Grid[i][u] = 0;
+				if (CheckVictory(Grid[i][u - 1]))
+					return;
 			}
 		}
 	}
@@ -188,6 +213,8 @@ void MoveDown()
 			{
 				Grid[i + 1][u] *= 2;
 				Grid[i][u] = 0;
+				if (CheckVictory(Grid[i + 1][u]))
+					return;
 			}
 		}
 	}
@@ -209,6 +236,8 @@ void MoveUp()
 			{
 				Grid[i - 1][u] *= 2;
 				Grid[i][u] = 0;
+				if (CheckVictory(Grid[i - 1][u]))
+					return;
 			}
 		}
 	}
@@ -294,4 +323,16 @@ bool CheckAvailableMove()
 	cout << endl;*/
 
 	return (bMoveRightPossible || bMoveLeftPossible || bMoveUpPossible || bMoveDownPossible);
+}
+
+bool CheckVictory(int& newScore)
+{
+	if (newScore == 2048)
+	{
+		DisplayGrid();
+		cout << "You reached 2048, congrats!" << endl;
+		bIsRunning = false;
+	}
+
+	return !bIsRunning;
 }

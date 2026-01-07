@@ -21,6 +21,7 @@ void MoveDown();
 void UpdateEmptySlots();
 int RandomInt(int Min, int Max);
 bool CheckAvailableMove();
+bool CheckVictory(int& newScore);
 
 
 // VARIABLES
@@ -33,4 +34,4 @@ bool bMoveLeftPossible;
 bool bMoveUpPossible;
 bool bMoveDownPossible;
 
-bool isRunning = true;
+bool bIsRunning = true;
