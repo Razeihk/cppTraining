@@ -1,5 +1,4 @@
 #include <iostream>
-#include <ctime>
 #include <random>
 
 #include "TwentyFortyEight.h"
@@ -31,7 +30,7 @@ void InitialiseGrid()
 	}
 
 	// DEBUG TO WIN
-	for (int i = 0; i < TFEConst::c_NumberOfRows; i++)
+	/*for (int i = 0; i < TFEConst::c_NumberOfRows; i++)
 	{
 		for (int u = 0; u < TFEConst::c_NumberOfColumns; u++)
 		{
@@ -45,7 +44,7 @@ void InitialiseGrid()
 			}
 			
 		}
-	}
+	}*/
 
 	for (int i = 0; i < 2; i++)
 	{
