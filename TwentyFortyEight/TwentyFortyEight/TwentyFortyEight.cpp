@@ -136,6 +136,7 @@ void PlayerMove()
 	// Could have been a switch (didn't seem to work when I tried, but I might have used "" instead of '')
 	
 	// Bug if I enter multiple chars, it calls the function for each char
+	// Use a string instead of char, OR char* but need to fix the cin
 
 	if (Direction == 'd' && bMoveRightPossible)
 	{
