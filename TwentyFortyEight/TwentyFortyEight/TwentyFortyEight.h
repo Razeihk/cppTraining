@@ -7,6 +7,8 @@ namespace TFEConst
 	constexpr int c_NumberOfRows = 4;
 }
 
+// CORRECTION ZAZAR
+// Add comments before functions (automatically adds tooltips in UE)
 
 //FUNCTIONS
 

@@ -5,6 +5,11 @@
 
 using namespace std;
 
+// CORRECTION ZAZAR
+// Add more comments
+
+// Pseudo code: describe each step in comments
+
 
 int main()
 {
@@ -60,6 +65,9 @@ void DisplayGrid()
 
 	for (int i = 0; i < TFEConst::c_NumberOfRows; i++)
 	{
+		// CORRECTION ZAZAR
+		// cout << "|";
+
 		for (int u = 0; u < TFEConst::c_NumberOfColumns; u++)
 		{
 			if (u == 0)
@@ -89,6 +97,9 @@ void DisplayGrid()
 				cout << endl;
 			}
 		}
+
+		// CORRECTION ZAZAR
+		// cout << endl;
 	}
 
 	cout << endl;
@@ -121,6 +132,11 @@ void PlayerMove()
 
 	int MergedNumber = 0;
 
+	// CORRECTION ZAZAR
+	// Could have been a switch (didn't seem to work when I tried, but I might have used "" instead of '')
+	
+	// Bug if I enter multiple chars, it calls the function for each char
+
 	if (Direction == 'd' && bMoveRightPossible)
 	{
 		MergedNumber = MoveRight();
@@ -140,6 +156,8 @@ void PlayerMove()
 	else
 	{
 		cout << "Choose another move" << endl << endl;
+		// CORRECTION ZAZAR
+		// Flush cin
 		return;
 	}
 	
@@ -162,6 +180,10 @@ int MoveRight()
 	{
 		for (int u = TFEConst::c_NumberOfColumns - 2; u >= 0; u--)
 		{
+			// CORRECTION ZAZAR
+			//if (Grid[i][u] == 0)
+			//	break;
+
 			if (Grid[i][u] != 0 && Grid[i][u + 1] == 0)
 			{
 				Grid[i][u + 1] = Grid[i][u];
@@ -173,6 +195,11 @@ int MoveRight()
 				MergedNumber = Grid[i][u + 1] * 2;
 				Grid[i][u + 1] = MergedNumber;
 				Grid[i][u] = 0;
+
+				// CORRECTION ZAZAR
+				// Bug if it merges another number after merging the 2048
+				// MergedNumber = std::max<int>(Grid[i][u+1]*2, MergedNumber);
+				// This takes the higher value between the two sent
 			}
 		}
 	}
@@ -340,8 +367,17 @@ bool CheckAvailableMove()
 	return (bMoveRightPossible || bMoveLeftPossible || bMoveUpPossible || bMoveDownPossible);
 }
 
+// CORRECTION ZAZAR
+// No need for the & (with int, float, double, etc.) as a reference is already an int
+// Could've been a const
 bool CheckVictory(int& MergedNumber)
 {
+	// CORRECTION ZAZAR
+	// if (MergedNumber >= 2048)
+
+	// Could've been
+	// bIsRunning = !(MergedNumber >= 2048)
+
 	if (MergedNumber == 2048)
 	{
 		DisplayGrid();
@@ -349,5 +385,6 @@ bool CheckVictory(int& MergedNumber)
 		bIsRunning = false;
 	}
 
+	// I don't use the return anymore, so it's useless
 	return !bIsRunning;
 }
