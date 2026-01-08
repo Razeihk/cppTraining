@@ -1,5 +1,5 @@
 #include "Duration.h"
-#include <iostream>
+
 
 using namespace std;
 
@@ -75,6 +75,11 @@ void Duration::displayTime() const
 	cout << "Duration is " << m_hours << " hours, " << m_minutes << " minutes and " << m_seconds << " seconds" << endl;
 }
 
+void Duration::display(ostream &stream) const
+{
+	stream << m_hours << "h" << m_minutes << "m" << m_seconds << "s";
+}
+
 int Duration::asSeconds() const
 {
 	return (m_hours * 3600) + (m_minutes * 60) + m_seconds;
@@ -102,9 +107,9 @@ int Duration::getHours() const
 
 // OPERATORS
 
-bool operator==(Duration const& a, Duration const& b)
+bool Duration::operator==(Duration const& b)
 {
-	return a.isEqual(b);
+	return isEqual(b);
 }
 
 bool operator!=(Duration const& a, Duration const& b)
@@ -167,9 +172,9 @@ void Duration::operator-=(Duration const& a)
 	int resultSeconds = asSeconds() - a.asSeconds();
 
 	m_hours = resultSeconds / 3600;
-	int remindingSeconds = resultSeconds % 3600;
-	m_minutes = remindingSeconds / 60;
-	m_seconds = remindingSeconds % 60;
+	int remainingSeconds = resultSeconds % 3600;
+	m_minutes = remainingSeconds / 60;
+	m_seconds = remainingSeconds % 60;
 }
 
 Duration operator-(Duration const& a, Duration const& b)
@@ -177,4 +182,10 @@ Duration operator-(Duration const& a, Duration const& b)
 	Duration temp = a;
 	temp -= b;
 	return temp;
+}
+
+ostream& operator<<(ostream& stream, Duration const& duration)	// ostream& is because it returns the variable stream, which is a reference
+{
+	duration.display(stream);
+	return stream;
 }

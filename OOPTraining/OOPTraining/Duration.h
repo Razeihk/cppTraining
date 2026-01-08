@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+
 class Duration
 {
 public:
@@ -11,7 +13,9 @@ public:
 	bool isSmallerThan(Duration const& b) const;
 	bool isGreaterThan(Duration const& b) const;
 	void displayTime() const;
-	int asSeconds() const; // returns the total number of seconds in a duration
+	void display(std::ostream &stream) const;
+	int asSeconds() const; // returns the total number of seconds in a 
+
 
 
 	// GETTERS
@@ -24,6 +28,8 @@ public:
 	void operator+=(Duration const& a);
 	void operator+=(int const seconds); // Allows to add only seconds
 	void operator-=(Duration const& a);
+
+	bool operator==(Duration const& b); // Probably a C++ update that allows the operators to be in the Class
 	
 
 	//int getHours() const;
@@ -39,7 +45,7 @@ private:
 
 // OPERATORS
 
-bool operator==(Duration const& a, Duration const& b);
+
 bool operator!=(Duration const& a, Duration const& b);
 bool operator<(Duration const& a, Duration const& b);
 bool operator>(Duration const& a, Duration const& b);
@@ -47,3 +53,4 @@ bool operator<=(Duration const& a, Duration const& b);
 bool operator>=(Duration const& a, Duration const& b);
 Duration operator+(Duration const& a, Duration const& b);
 Duration operator-(Duration const& a, Duration const& b);
+std::ostream& operator<<(std::ostream& flux, Duration const& duration);

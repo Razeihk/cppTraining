@@ -13,6 +13,7 @@ using namespace std;
 
 int main()
 {
+	durationExercise();
 	
 }
 
@@ -108,7 +109,7 @@ void createAndDisplay(Character character)
 void durationExercise()
 {
 	Duration duration01(1, 0, 0);
-	Duration duration02(0, 0, 120);
+	Duration duration02(1, 0, 0);
 	Duration duration03;
 
 	/*int tempSeconds = (duration01.getHours() * 3600) + (duration01.getMinutes() * 60) + duration01.getSeconds();
@@ -120,7 +121,7 @@ void durationExercise()
 	//duration02.displayTime();
 
 	duration03 = duration01 - duration02;
-	duration03.displayTime();
+	cout << (duration01 == duration02);
 	/*duration03.displayTime();
 
 	duration03 += 100;
