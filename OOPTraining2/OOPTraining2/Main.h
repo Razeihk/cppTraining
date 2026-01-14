@@ -1,9 +1,27 @@
 #pragma once
 
+
+#pragma region Includes RPG
 #include "Character.h"
 #include "Warrior.h"
 #include "Magician.h"
+#pragma endregion
 
+
+#include "Garage.h"
+#include "Vehicle.h"
+#include "Bike.h"
+#include "Car.h"
+#include "Truck.h"
+
+// FUNCTIONS
+
+
+
+
+// VARIABLES
+
+#pragma region RPG
 std::string WeaponNames[4]
 {
 	"Rusty sword",
@@ -24,3 +42,12 @@ std::string ArmourNames[3]
 Warrior Hero("Hero", WeaponNames[1], ArmourNames[2]);
 Character Enemy("Enemy", WeaponNames[0]);
 Character Enemy2(Enemy);
+#pragma endregion
+
+#pragma region Garage
+
+Garage MyGarage;
+
+#pragma endregion
+
+
