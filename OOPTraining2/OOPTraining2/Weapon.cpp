@@ -14,11 +14,11 @@ Weapon::Weapon(string Name)
 	{
 		m_Damage = 10;
 	}
-	else if (m_Name == "GreatSword")
+	else if (m_Name == "Great sword")
 	{
 		m_Damage = 15;
 	}
-	else if (m_Name == "Double Axe")
+	else if (m_Name == "Double axe")
 	{
 		m_Damage = 20;
 	}

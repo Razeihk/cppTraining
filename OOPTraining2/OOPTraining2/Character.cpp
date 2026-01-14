@@ -5,12 +5,6 @@ using namespace std;
 
 // CONSTRUCTORS
 
-Character::Character()
-	:m_Weapon(nullptr)
-{
-
-}
-
 Character::Character(string Name, string& WeaponName)
 	:m_Name(Name), m_Weapon(new Weapon(WeaponName))
 {
@@ -29,7 +23,7 @@ Character::Character(Character const& Character)
 
 // FUNCTIONS
 
-void Character::Attack(Character& Target)
+void Character::BasicAttack(Character& Target)
 {
 	Target.ReceiveDamage(m_Weapon->GetDamage());
 }
@@ -37,6 +31,10 @@ void Character::Attack(Character& Target)
 void Character::ReceiveDamage(int Damage)
 {
 	m_Health -= Damage;
+	if (m_Health < 0)
+	{
+		m_Health = 0;
+	}
 }
 
 
@@ -47,7 +45,6 @@ void Character::DisplayCharacter() const
 	cout << "Name: " << GetName() << endl;
 	cout << "Health: " << GetHealth() << endl;
 	m_Weapon->DisplayWeapon();
-	cout << endl;
 }
 
 void Character::DisplayWeaponPointer() const
@@ -66,6 +63,25 @@ string Character::GetName() const
 int Character::GetHealth() const
 {
 	return m_Health;
+}
+
+
+// OPERATORS
+
+Character& Character::operator=(Character const& CharacterToCopy)
+{
+	if (this != &CharacterToCopy)	// Adding & in front of the variable returns its adress
+									// Important to check if we're not copying the same object (especially since we delete the weapon before assigning the copy)
+	{
+		m_Health = CharacterToCopy.m_Health;
+		m_Name = CharacterToCopy.m_Name;
+
+		delete m_Weapon;	// Deletes the weapon object. As the pointer will change its address, 
+							// there wouldn't be any way to find the old weapon object
+		m_Weapon = new Weapon(*CharacterToCopy.m_Weapon); // Creates a new Weapon object and assigns its address to the pointer
+	}
+
+	return *this;
 }
 
 

@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="OOPTraining2/OOPTraining2.vcxproj" />
+  <Project Path="OOPTraining2/OOPTraining2.vcxproj" Id="b2fb1482-d0c7-4577-974e-3703ffe997e7" />
 </Solution>
