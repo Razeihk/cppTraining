@@ -7,16 +7,20 @@
 #include "Magician.h"
 #pragma endregion
 
-
+#pragma region Includes Garage
 #include "Garage.h"
 #include "Vehicle.h"
 #include "Bike.h"
 #include "Car.h"
 #include "Truck.h"
+#pragma endregion
+
+#include "Fraction.h"
 
 // FUNCTIONS
 
-
+void GarageExercise();
+void OOPPart2Exercise();
 
 
 // VARIABLES
