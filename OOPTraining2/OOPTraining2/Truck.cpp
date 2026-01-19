@@ -4,6 +4,7 @@
 
 using namespace std;
 
+
 Truck::Truck()
 {
 	m_NumberOfWheels = 8;

@@ -4,6 +4,7 @@
 
 using namespace std;
 
+
 Bike::Bike()
 {
 	m_NumberOfWheels = 2;

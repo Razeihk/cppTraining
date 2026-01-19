@@ -22,6 +22,9 @@ public:
 	int GetPrice() const;
 	std::string GetType() const;
 
+	static int NumberOfVehicles();	// A static function doesn't need an object to be called
+									// It can be used for example to get the total number of instances of an object
+
 	virtual ~Vehicle();
 
 protected:
@@ -29,5 +32,7 @@ protected:
 	int m_NumberOfWheels = 0;
 	int m_Year = 0;
 	std::string m_Type = "";
+
+	static int VehiclesCount;
 };
 

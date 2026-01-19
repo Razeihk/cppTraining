@@ -13,6 +13,8 @@ int main()
 
 	cout << endl;
 
+	cout << "Number of vehicles: " << Vehicle::NumberOfVehicles() << endl;	// Static function can be called without an object
+
 	for (Vehicle* v : MyGarage.GetStoredVehicles())
 	{
 		v->DisplayVehicle();
@@ -21,6 +23,8 @@ int main()
 	MyGarage.SellVehicle(MyGarage.GetStoredVehicles()[1]);
 
 	cout << endl;
+
+	cout << "Number of vehicles: " << Vehicle::NumberOfVehicles() << endl;
 
 	for (Vehicle* v : MyGarage.GetStoredVehicles())
 	{
