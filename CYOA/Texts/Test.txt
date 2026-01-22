@@ -1,0 +1,7 @@
+<Paragraph=0>
+	Coucou
+	Sur deux lignes
+<\Paragraph>
+<Paragraph=1>
+	La suite de l'histoire
+<\Paragraph>
