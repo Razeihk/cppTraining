@@ -1,7 +1,8 @@
 <Paragraph=0>
-	Coucou
-	Sur deux lignes
+	This is the beginning of the story.
+	To continue the story, type 1.
 <\Paragraph>
 <Paragraph=1>
-	La suite de l'histoire
+	This is the next part of the story.
+	Good job.
 <\Paragraph>

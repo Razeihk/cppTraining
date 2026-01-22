@@ -9,28 +9,46 @@ using namespace std;
 
 int main()
 {
-    cout << filesystem::current_path() << endl;
-    ReadStream(0);
+    ReadStreamOneFile(0);
 }
 
 void ReadStreamOneFile(int Number)
 {
-    string Paragraph = to_string(Number);
-    ifstream MyStream("C:/Users/cesar/Documents/GitHub/cppTraining/CYOA/Texts/Test.txt");   // Warning: do not forget to use / or \\
+    string Paragraph = to_string(Number);   // Turns the number into a string
+    ifstream MyStream("../Texts/Test.xml");   // Opens the file
 
     if (MyStream)
     {
-        string Line;
+        MyStream.seekg(0, ios::beg);    // Positions the cursor at the beginning of the file
+        int CursorPosition = MyStream.tellg();  // Save the current position of the cursor
+        bool keepReading = true;    // Used to know when to stop reading the file
+        string Line;    // Variable to store the text
 
-        while (getline(MyStream, Line))
+        while (keepReading)
         {
-            cout << Line << endl;
+            getline(MyStream, Line);    // Reads the first line of the file
+            
+            if (Line == "<Paragraph=" + Paragraph + ">")
+            {
+                while (getline(MyStream, Line))
+                {
+                    if (Line == "<\\Paragraph>")
+                    {
+                        keepReading = false;
+                        break;
+                    }
+                    Line.erase(remove(Line.begin(), Line.end(), '\t'), Line.end());
+                    cout << Line << endl;
+                }
+            }
         }
     }
     else
     {
         cout << "ERROR: Can't open the file" << endl;
     }
+
+    AskNumber();
 }
 
 // Reads a file based on the paragraph number requested by the player
@@ -63,5 +81,5 @@ void AskNumber()
 
     cin >> Number;
 
-    ReadStream(Number);
+    ReadStreamOneFile(Number);
 }
