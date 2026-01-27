@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="CYOA/CYOA.vcxproj" />
+  <Project Path="CYOA/CYOA.vcxproj" Id="d24ff24a-b9f5-4d33-8f87-8d249d3d0f47" />
 </Solution>
