@@ -4,11 +4,12 @@
 #include <filesystem>
 
 #include "CYOA.h"
+#include "FileReader.h"
 
 
 int main()
 {
-    ReadStreamCSV(87);
+    FileReader::ReadCSV(0);
     return EXIT_SUCCESS;
 }
 
@@ -48,7 +49,7 @@ void ReadStreamOneFile(int Number)
         std::cout << "ERROR: Can't open the file" << std::endl;
     }
 
-    AskNumber();
+    //AskNumber();
 }
 
 // Reads a file based on the paragraph number requested by the player
@@ -72,75 +73,6 @@ void ReadStream(int Number)
         std::cout << "ERROR: Can't open the file" << std::endl;
     }
 
-    AskNumber();
+    //AskNumber();
 }
 
-void ReadStreamCSV(int number)
-{
-    std::string paragraphId = std::to_string(number);          // Turns the number into a string
-    std::ifstream myStream("../Texts/CYOA - Story.csv");     // Opens the file
-
-    if (myStream)
-    {
-        std::string line;    // Variable to store the text
-        //getline(MyStream, Line, '\n');
-        //MyStream.seekg(Line.size(), std::ios::beg); // Positions the cursor at the beginning of the file
-        //int CursorPosition = MyStream.tellg();      // Save the current position of the cursor
-        bool keepReading = true;                    // Used to know when to stop reading the file
-
-        Paragraph newPar;
-
-        while (getline(myStream, line, '\n'))
-        {
-            if (line.find(paragraphId) == 0) // 1 - Find our paragraph number
-            {
-                newPar.id = number;
-                line.erase(0, paragraphId.size() + 2);
-                newPar.text += (line + "\n");
-
-                while (getline(myStream, line)) // 2 - parse the paragraph's text
-                {
-                    if (!IsEndParagraph(line)) // new line of current paragraph
-                    {
-                        newPar.text += (line + "\n");
-                    }
-                    else  // new paragraph, stop reading
-                    {
-                        int startPos = line.find("'\t");
-                        line.erase(startPos, line.size());
-                        newPar.text += (line + "\n");
-                        break;
-                    }
-                }
-                DisplayText(newPar.text);
-                break;
-            }
-        }
-    }
-    else
-    {
-        std::cout << "ERROR: Can't open the file" << std::endl;
-    }
-
-    AskNumber();
-}
-
-void AskNumber()
-{
-    int number;
-
-    std::cin >> number;
-    std::cout << "\n";
-    ReadStreamCSV(number);
-}
-
-void DisplayText(std::string textToDisplay)
-{
-    std::cout << textToDisplay << "\n";
-}
-
-bool IsEndParagraph(std::string currentLine)
-{
-    std::string endPar = "'\t";
-    return currentLine.find(endPar) != currentLine.npos;
-}

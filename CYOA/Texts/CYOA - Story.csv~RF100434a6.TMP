@@ -1,0 +1,10 @@
+Number	Text	Outputs	
+0	'Beginning of the story
+Two lines
+Three lines'	1	2
+1	'The next part of the story
+Two lines as well'	10	
+2	'Paragraph with 2 numbers
+Another line'	0	1
+10	'Nique ta mere
+Et tes morts'	2	0

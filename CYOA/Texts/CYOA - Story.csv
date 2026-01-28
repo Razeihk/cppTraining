@@ -1,10 +1,13 @@
-Number	Text	Outputs
-87	'Beginning of the story
-Two lines
-Three lines'	1
-1	'The next part of the story
-Two lines as well'	5
-85	'Paragraph with 2 numbers
-Another line'	78
-5	'Nique ta mere
-Et tes morts'	98
+Number	Text	Outputs	
+0	'This is the beginning of the story
+If you choose to enter the dungeon, go to 1.
+If you choose to talk to the old man in front of the dungeon, go to 2.'	1	2
+1	'You enter the dungeon. It''s dark in there.
+If you choose to go to the right, go to 3.
+If you choose to go to the left, go to 4.'	3	4
+2	'This will one day be a dialogue.
+Always needs 2 lines.'	99	
+3	'Too bad, you died.
+Try again!'	99	
+4	'Congrats, you won!
+You can close the game.'	99	
